@@ -1,0 +1,40 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Student Task Tracker</h1>
+
+    <input type="text" id="task" placeholder="Enter your task">
+
+    <button onclick="addTask()">Add Task</button>
+
+    <p id="message"></p>
+
+    <script>
+        async function addTask() {
+
+            let task = document.getElementById("task").value;
+
+            let response = await fetch("http://127.0.0.1:5000/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({task: task})
+            });
+
+            let data = await response.json();
+
+            document.getElementById("message").innerText = data.message;
+        }
+    </script>
+
+</body>
+</html>
+```
