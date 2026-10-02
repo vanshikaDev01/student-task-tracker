@@ -1,4 +1,3 @@
-```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -20,4 +19,3 @@ def add_task():
     })
 
 app.run(debug=True)
-```
